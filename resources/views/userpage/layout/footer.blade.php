@@ -5,7 +5,7 @@
                     <div class="row g-4">
                         <div class="col-lg-3">
                             <a href="#">
-                                <h1 class="text-primary mb-0">Fruitables</h1>
+                                <h1 class="text-primary mb-0">TastySlim</h1>
                                 <p class="text-secondary mb-0">Fresh products</p>
                             </a>
                         </div>
@@ -59,8 +59,8 @@
                     <div class="col-lg-3 col-md-6">
                         <div class="footer-item">
                             <h4 class="text-light mb-3">Contact</h4>
-                            <p>Address: 1429 Netus Rd, NY 48247</p>
-                            <p>Email: Example@gmail.com</p>
+                            <p>Address: Dharmawangsa, Surabaya</p>
+                            <p>Email: tastyslim@gmail.com</p>
                             <p>Phone: +0123 4567 8910</p>
                             <p>Payment Accepted</p>
                             <img src="img/payment.png" class="img-fluid" alt="">

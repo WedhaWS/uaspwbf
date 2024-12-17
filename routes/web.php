@@ -7,6 +7,8 @@ use App\Http\Controllers\JenisUserController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\SettingMenuController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ShopController;
+use App\Http\Controllers\UserPageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', [LoginController::class, 'indexlogin'])->name('login');
@@ -15,20 +17,6 @@ Route::get('/register', [LoginController::class, 'indexregister'])->name('regist
 Route::post('/register', [LoginController::class, 'register']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-
-Route::get('/testt', function () {
-    return view('userpage.layout.main');
-})->name('userpage');
-
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-Route::get('/test', function () {
-    return view('test');
-});
-
 // Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 // Route::post('/login', [AuthController::class, 'login']);
 // Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -36,9 +24,13 @@ Route::get('/test', function () {
 // Route::post('/register', [AuthController::class, 'register'])->name('register');
 ////
 
-Route::get('/', function () {
-    return view('userpage.welcome');
-})->name('userpage');
+Route::get('/', [UserPageController::class, 'index'])->name('userpage.index');
+Route::get('/contact', [UserPageController::class, 'contact'])->name('userpage.contact');
+
+Route::get('/shop', [ShopController::class, 'index'])->name('userpage.shop');
+Route::get('/shop-detail', [ShopController::class, 'shopDetail'])->name('userpage.shop-detail');
+
+
 
 Route::middleware(['auth', 'admin', 'check.menu.access'])->group(function () {
     Route::prefix('dashboard')->group(function () {
