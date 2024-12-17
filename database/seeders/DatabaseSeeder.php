@@ -13,9 +13,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $this->call(JenisUserSeeder::class);
-        $this->call(MenuSeeder::class);
-        $this->call(SettingMenuSeeder::class);
-        $this->call(UserSeeder::class);
+        // User::factory(10)->create();
+
+        $this->call([
+            JenisUsersSeeder::class,
+        ]);
+    
     }
 }
+
+
