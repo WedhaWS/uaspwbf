@@ -33,9 +33,29 @@
                                 <i class="fa fa-shopping-bag fa-2x"></i>
                                 <span class="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style="top: -5px; left: 15px; height: 20px; min-width: 20px;">3</span>
                             </a>
-                            <a href="#" class="my-auto">
-                                <i class="fas fa-user fa-2x"></i>
-                            </a>
+                            <a href="#" class="my-auto" id="userDropdown" data-bs-toggle="dropdown">
+        <i class="fas fa-user fa-2x"></i>
+    </a>
+    <div class="dropdown-menu dropdown-menu-end m-0 bg-white rounded-0">
+        @if (Route::has('login'))
+            @auth
+                @if (auth()->user()->is_admin)
+                    <a href="{{ url('/dashboard') }}" class="dropdown-item">Dashboard</a>
+                @endif
+                <form method="POST" action="{{ route('logout') }}" class="m-0">
+                    @csrf
+                    <button type="submit" class="dropdown-item">
+                        Log out
+                    </button>
+                </form>
+            @else
+                <a href="{{ route('login') }}" class="dropdown-item">Log in</a>
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}" class="dropdown-item">Register</a>
+                @endif
+            @endauth
+        @endif
+    </div>
                         </div>
                     </div>
                 </nav>
