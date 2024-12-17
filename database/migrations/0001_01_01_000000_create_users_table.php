@@ -15,8 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('no_hp')->nullable();
+            $table->string('wa')->nullable();
+            $table->string('pin', 6)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('status_user')->default(false);
+            $table->foreignId('jenis_user_id')->default(2)->constrained('jenis_users')->onDelete('cascade'); // Perbaiki nama tabel di sini
             $table->rememberToken();
             $table->timestamps();
         });
@@ -24,7 +29,6 @@ return new class extends Migration
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
-            $table->timestamp('created_at')->nullable();
         });
 
         Schema::create('sessions', function (Blueprint $table) {
