@@ -16,14 +16,14 @@ Route::post('/register', [LoginController::class, 'register']);
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 
-Route::get('/', function () {
-    return view('userpage.welcome');
+Route::get('/testt', function () {
+    return view('userpage.layout.main');
 })->name('userpage');
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/test', function () {
     return view('test');
