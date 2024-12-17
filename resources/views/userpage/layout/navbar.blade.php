@@ -23,7 +23,7 @@
                     <div class="navbar-nav mx-auto">
     <a href="{{ route('userpage.index') }}" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
     <a href="{{ route('userpage.shop') }}" class="nav-item nav-link {{ Request::is('shop') ? 'active' : '' }}">Shop</a>
-    <a href="{{ route('userpage.shop-detail') }}" class="nav-item nav-link {{ Request::is('shop-detail') ? 'active' : '' }}">Shop Detail</a>
+    <a href="{{ route('userpage.testimoni') }}" class="nav-item nav-link {{ Request::is('testimoni') ? 'active' : '' }}">Testimoni</a>
     <a href="{{ route('userpage.contact') }}" class="nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">Contact</a>
 </div>
 

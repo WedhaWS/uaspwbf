@@ -26,6 +26,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/', [UserPageController::class, 'index'])->name('userpage.index');
 Route::get('/contact', [UserPageController::class, 'contact'])->name('userpage.contact');
+Route::get('/testimoni', [UserPageController::class, 'testimoni'])->name('userpage.testimoni');
 
 Route::get('/shop', [ShopController::class, 'index'])->name('userpage.shop');
 Route::get('/shop-detail', [ShopController::class, 'shopDetail'])->name('userpage.shop-detail');

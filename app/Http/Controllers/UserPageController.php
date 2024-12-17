@@ -15,4 +15,9 @@ class UserPageController extends Controller
     {
         return view('userpage.contact'); // Ensure this view exists
     }
+
+    public function testimoni()
+    {
+        return view('userpage.testimoni'); // Ensure this view exists
+    }
 }
