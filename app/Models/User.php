@@ -16,7 +16,6 @@ class User extends Authenticatable
         'password',
         'no_hp',
         'wa',
-        'pin',
         'jenis_user_id',
     ];
 
@@ -25,9 +24,13 @@ class User extends Authenticatable
         'remember_token',
     ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
 
     // Relationship with JenisUser
     public function jenisUser()

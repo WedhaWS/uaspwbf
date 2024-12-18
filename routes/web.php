@@ -26,7 +26,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 ////
 
 Route::get('/', [UserPageController::class, 'index'])->name('userpage.index');
-Route::get('/contact', [UserPageController::class, 'contact'])->name('userpage.contact');
+Route::get('/menu', [UserPageController::class, 'menu'])->name('menu');
+Route::get('/product', [UserPageController::class, 'product'])->name('product');
 Route::get('/testimoni', [UserPageController::class, 'testimoni'])->name('userpage.testimoni');
 
 Route::get('/shop', [ShopController::class, 'index'])->name('userpage.shop');
@@ -34,17 +35,17 @@ Route::get('/shop-detail', [ShopController::class, 'shopDetail'])->name('userpag
 
 
 
-Route::middleware(['auth', 'admin', 'check.menu.access'])->group(function () {
-    Route::prefix('dashboard')->group(function () {
-        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-        Route::resource('menu', MenuController::class);
-        Route::resource('setting_menus', SettingMenuController::class);
-        Route::resource('users', UserController::class);
-        Route::resource('jenis_user', JenisUserController::class);
-        Route::get('/setting_menus/menus/{jenisUserId}', [SettingMenuController::class, 'getMenusByJenisUser']);
+// Route::middleware(['auth', 'admin', 'check.menu.access'])->group(function () {
+//     Route::prefix('dashboard')->group(function () {
+//         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+//         Route::resource('menu', MenuController::class);
+//         Route::resource('setting_menus', SettingMenuController::class);
+//         Route::resource('users', UserController::class);
+//         Route::resource('jenis_user', JenisUserController::class);
+//         Route::get('/setting_menus/menus/{jenisUserId}', [SettingMenuController::class, 'getMenusByJenisUser']);
 
-    });
-});
+//     });
+// });
 
 Route::get('/dashboard.user', function () {
     return view('user.dashboard');

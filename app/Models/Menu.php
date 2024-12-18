@@ -2,20 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Menu extends Model
 {
-    use HasFactory;
+    protected $table = 'menus';
 
     protected $fillable = [
         'nama_menu',
-        'link_menu',
-        'icon_menu',
+        'deskripsi',
+        'gambar',
     ];
-    public function settingMenus()
-    {
-        return $this->hasMany(SettingMenu::class, 'menu_id');
-    }
 }

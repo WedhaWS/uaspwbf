@@ -18,44 +18,44 @@ class AuthController extends Controller
     //     return view('dashboard', compact('menus'));
     // }
 
-    // public function showLogin() {
-    //     return view('auth.login'); 
-    // }
+    public function showLogin() {
+        return view('auth.login'); 
+    }
 
-    // public function showRegister() {
-    //     $Roles = JenisUser::all();
-    //     return view('auth.register',compact('Roles')); 
-    // }
+    public function showRegister() {
+        $Roles = JenisUser::all();
+        return view('auth.register',compact('Roles')); 
+    }
 
-    // public function login(Request $request)
-    // {
-    //     $credentials = $request->validate([
-    //         'username' => ['required'],
-    //         'password' => ['required'],
-    //     ]);
-    //     // if (Auth::attempt($credentials)) {
-    //     //     $request->session()->regenerate();
-    //     //     return redirect()->intended('/dashboard');
-    //     // }
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'username' => ['required'],
+            'password' => ['required'],
+        ]);
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/dashboard');
+        }
 
-    //     if (Auth::attempt($credentials)) {
-    //         $request->session()->regenerate();
-    //         if(Auth::user()->id_jenis_user == 1){
-    //             return redirect('/dashboard');
-    //     }
-    //     if(Auth::user()->id_jenis_user == 2){
-    //         return redirect('/menu');
-    // }
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            if(Auth::user()->id_jenis_user == 1){
+                return redirect('/dashboard');
+        }
+        if(Auth::user()->id_jenis_user == 2){
+            return redirect('/menu');
+    }
 
         
-    //     }
+        }
         
         
-    //     // Jika autentikasi gagal
-    //     return back()->withErrors([
-    //         'username' => 'The provided credentials do not match our records.',
-    //     ])->onlyInput('username');
-    // }
+        // Jika autentikasi gagal
+        return back()->withErrors([
+            'username' => 'The provided credentials do not match our records.',
+        ])->onlyInput('username');
+    }
 
     
     // public function register(Request $request)

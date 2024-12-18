@@ -10,21 +10,30 @@ class CreateProductsTable extends Migration
 {
     public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('description');
-            $table->decimal('price_weekly', 10, 2);  // Harga paket 7 hari
-            $table->decimal('price_monthly', 10, 2);  // Harga paket 30 hari
-            $table->integer('calories');
             $table->string('image')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('products', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->text('description');
+            $table->decimal('price', 10, 2);  // Harga paket 7 hari
+            $table->integer('calories');
             $table->boolean('is_available')->default(true);
+            $table->integer('duration');  // Durasi paket dalam hari
             $table->timestamps();
         });
     }
 
     public function down()
     {
+        Schema::dropIfExists('categories');
         Schema::dropIfExists('products');
     }
 }

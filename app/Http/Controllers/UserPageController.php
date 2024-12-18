@@ -2,18 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\Menu; // Ensure the Menu model is imported at the top of the file
 
 class UserPageController extends Controller
 {
-    public function index()
+    public function index(){
+        return view('user.dashboard');
+    }
+    public function menu()
     {
-        return view('userpage.index'); // Adjust the view path as necessary
+        $menus = Menu::all(); // Ensure the Menu model is imported at the top of the file
+        return view('user.menu',compact('menus')); // Adjust the view path as necessary
     }
 
-    public function contact()
+    public function product()
     {
-        return view('userpage.contact'); // Ensure this view exists
+        $products = Category::all(); // Ensure the Product model is imported at the top of the file
+        return view('user.product',compact('products')); // Ensure this view exists
     }
 
     public function testimoni()
