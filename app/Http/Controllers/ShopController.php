@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Products;
+use App\Models\Categories;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
 {
     public function index()
     {
-        return view('userpage.shop'); // Adjust the view path as needed
+        $categories = Categories::all();
+        $products = Products::with('category')->get(); // Mengambil produk dan kategori terkait
+        return view('userpage.shop', compact('categories', 'products')); 
     }
 
     public function shopDetail()

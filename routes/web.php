@@ -9,6 +9,7 @@ use App\Http\Controllers\SettingMenuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\UserPageController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 
@@ -35,6 +36,7 @@ Route::get('testimoni', [UserPageController::class, 'testimoni'])->name('testimo
 Route::get('/shop', [ShopController::class, 'index'])->name('userpage.shop');
 Route::get('/shop-detail', [ShopController::class, 'shopDetail'])->name('userpage.shop-detail');
 
+<<<<<<< HEAD
 Route::middleware('auth')->group(function(){
     Route::get('payment/{id}', [UserPageController::class, 'payment'])->name('payment');
     Route::post('payment-confirm', [UserPageController::class, 'paymentConfirm'])->name('payment-confirm');
@@ -49,6 +51,34 @@ Route::middleware('auth')->group(function(){
 //         Route::resource('users', UserController::class);
 //         Route::resource('jenis_user', JenisUserController::class);
 //         Route::get('/setting_menus/menus/{jenisUserId}', [SettingMenuController::class, 'getMenusByJenisUser']);
+=======
+
+
+Route::middleware(['auth', 'admin', 'check.menu.access'])->group(function () {
+    Route::prefix('dashboard')->group(function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::resource('menu', MenuController::class);
+        Route::resource('setting_menus', SettingMenuController::class);
+        Route::resource('users', UserController::class);
+        Route::resource('jenis_user', JenisUserController::class);
+        Route::get('/setting_menus/menus/{jenisUserId}', [SettingMenuController::class, 'getMenusByJenisUser']);
+
+        Route::get('/admin/add-category', [AdminController::class, 'addCategory'])->name('admin.add.category');
+        Route::post('/admin/store-category', [AdminController::class, 'storeCategory'])->name('admin.store.category');
+    
+        Route::get('/admin/add-product', [AdminController::class, 'addProduct'])->name('admin.add.product');
+        Route::post('/admin/store-product', [AdminController::class, 'storeProduct'])->name('admin.store.product');
+        Route::get('/admin/product-list', [AdminController::class, 'productList'])->name('admin.product.list');
+
+    });
+
+});
+
+
+Route::get('/dashboard.user', function () {
+    return view('user.dashboard');
+});
+>>>>>>> 5218fa6514c99ef0e22714cb6988866a4a663ef5
 
 //     });
 // });
@@ -88,3 +118,7 @@ Route::middleware('auth')->group(function(){
 // Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // Route::get('/register', [AuthController::class, 'showRegister']);
 // Route::post('/register', [AuthController::class, 'register'])->name('register');
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5218fa6514c99ef0e22714cb6988866a4a663ef5
