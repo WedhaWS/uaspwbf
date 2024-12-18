@@ -71,7 +71,7 @@
                     OUTLET
                 </h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    @foreach (['Jakarta', 'Tangerang', 'Palembang', 'Yogyakarta', 'Bogor', 'Surabaya', 'Malang', 'Solo', 'Depok', 'Bandung', 'Pekan Baru', 'Bekasi', 'Medan', 'Semarang'] as $outlet)
+                    @foreach (['Surabaya'] as $outlet)
                     <div class="bg-gray-700 rounded p-2 text-center">{{ $outlet }}</div>
                     @endforeach
                 </div>

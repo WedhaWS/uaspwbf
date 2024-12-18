@@ -16,7 +16,7 @@ Route::get('/login', [LoginController::class, 'indexlogin'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/register', [LoginController::class, 'indexregister'])->name('register');
 Route::post('/register', [LoginController::class, 'register']);
-Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 // Route::post('/login', [AuthController::class, 'login']);
@@ -29,11 +29,17 @@ Route::get('/', [UserPageController::class, 'index'])->name('userpage.index');
 Route::get('/menu', [UserPageController::class, 'menu'])->name('menu');
 Route::get('/product', [UserPageController::class, 'product'])->name('product');
 Route::get('/testimoni', [UserPageController::class, 'testimoni'])->name('userpage.testimoni');
+Route::get('Detail/{id}', [UserPageController::class, 'Detail'])->name('Detail');
+Route::get('testimoni', [UserPageController::class, 'testimoni'])->name('testimoni');
 
 Route::get('/shop', [ShopController::class, 'index'])->name('userpage.shop');
 Route::get('/shop-detail', [ShopController::class, 'shopDetail'])->name('userpage.shop-detail');
 
-
+Route::middleware('auth')->group(function(){
+    Route::get('payment/{id}', [UserPageController::class, 'payment'])->name('payment');
+    Route::post('payment-confirm', [UserPageController::class, 'paymentConfirm'])->name('payment-confirm');
+    Route::get('transaction-history',[UserPageController::class,'history'])->name('transaction.history');
+});
 
 // Route::middleware(['auth', 'admin', 'check.menu.access'])->group(function () {
 //     Route::prefix('dashboard')->group(function () {
@@ -47,38 +53,38 @@ Route::get('/shop-detail', [ShopController::class, 'shopDetail'])->name('userpag
 //     });
 // });
 
-Route::get('/dashboard.user', function () {
-    return view('user.dashboard');
-});
+// Route::get('/dashboard.user', function () {
+//     return view('user.dashboard');
+// });
 
-Route::get('/dashboard.admin', function () {
-    return view('admin.dashboard');
-});
+// Route::get('/dashboard.admin', function () {
+//     return view('admin.dashboard');
+// });
 
-Route::get('/menu.admin', function () {
-    return view('admin.menu');
-});
+// Route::get('/menu.admin', function () {
+//     return view('admin.menu');
+// });
 
-Route::get('/menu.user', function () {
-    return view('user.menu');
-});
+// Route::get('/menu.user', function () {
+//     return view('user.menu');
+// });
 
-Route::get('/product.user', function () {
-    return view('user.product');
-});
+// Route::get('/product.user', function () {
+//     return view('user.product');
+// });
 
-// Menampilkan daftar produk
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+// // Menampilkan daftar produk
+// Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 
-// Menampilkan form tambah produk
-Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+// // Menampilkan form tambah produk
+// Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
 
-// Menyimpan produk baru
-Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+// // Menyimpan produk baru
+// Route::post('/products', [ProductController::class, 'store'])->name('products.store');
 
 
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/register', [AuthController::class, 'showRegister']);
-Route::post('/register', [AuthController::class, 'register'])->name('register');
+// Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
+// Route::post('/login', [AuthController::class, 'login']);
+// Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+// Route::get('/register', [AuthController::class, 'showRegister']);
+// Route::post('/register', [AuthController::class, 'register'])->name('register');

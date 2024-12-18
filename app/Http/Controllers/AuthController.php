@@ -35,19 +35,16 @@ class AuthController extends Controller
         ]);
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/');
         }
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             if(Auth::user()->id_jenis_user == 1){
-                return redirect('/dashboard');
+                return redirect('/');
         }
-        if(Auth::user()->id_jenis_user == 2){
-            return redirect('/menu');
-    }
-
         
+            return redirect('/');    
         }
         
         

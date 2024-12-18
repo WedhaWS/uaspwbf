@@ -10,8 +10,33 @@
                 <a href="/" class="text-gray-600 hover:text-gray-800 transition duration-150 ease-in-out">Home</a>
                 <a href="{{ route('menu') }}" class="text-gray-600 hover:text-gray-800 transition duration-150 ease-in-out">Menus</a>
                 <a href="{{ route('product') }}" class="text-gray-600 hover:text-gray-800 transition duration-150 ease-in-out">Pricing</a>
-                <a href="#" class="text-gray-600 hover:text-gray-800 transition duration-150 ease-in-out">Testimoni</a>
-                <a href="#" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300 ease-in-out">Login</a>
+                <a href="{{ route('testimoni') }}" class="text-gray-600 hover:text-gray-800 transition duration-150 ease-in-out">Testimoni</a>
+                @guest
+    <!-- Tampilkan tombol Login jika pengguna belum login -->
+    <a href="{{ route('login') }}" class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition duration-300 ease-in-out">
+        Login
+    </a>
+    @endguest
+
+    @auth
+    <!-- Avatar untuk pengguna yang sudah login -->
+    <div class="relative">
+        <img 
+            src="{{ asset('asset/img/avatar.jpg')}}" 
+            alt="Avatar" 
+            class="w-10 h-10 rounded-full cursor-pointer"
+            id="avatar-menu"
+        >
+        <!-- Dropdown menu -->
+        <div 
+            id="dropdown-menu" 
+            class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg opacity-0 invisible transition-opacity duration-300 z-10"
+        >
+            <a href="{{ route('transaction.history') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">History Transaction</a>
+            <a href="{{ route('logout') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Log out</a>
+        </div>
+    </div>
+    @endauth
             </div>
 
             <div class="md:hidden">
@@ -35,3 +60,27 @@
         </div>
     </div>
 </nav>
+
+<script>document.addEventListener("DOMContentLoaded", function() {
+    const avatar = document.getElementById("avatar-menu");
+    const dropdown = document.getElementById("dropdown-menu");
+
+    avatar.addEventListener("click", function() {
+        // Toggle visibility
+        if (dropdown.classList.contains("opacity-0")) {
+            dropdown.classList.remove("opacity-0", "invisible");
+            dropdown.classList.add("opacity-100", "visible");
+        } else {
+            dropdown.classList.remove("opacity-100", "visible");
+            dropdown.classList.add("opacity-0", "invisible");
+        }
+    });
+
+    // Klik di luar dropdown untuk menutupnya
+    document.addEventListener("click", function(event) {
+        if (!avatar.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.remove("opacity-100", "visible");
+            dropdown.classList.add("opacity-0", "invisible");
+        }
+    });
+});</script>
