@@ -25,7 +25,7 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard');
+            return redirect()->intended('/');
         }
 
         return back()->withErrors([
@@ -44,6 +44,8 @@ class LoginController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'no_hp' => $request->hp,
+            'wa' => $request->hp,
             'password' => bcrypt($request->password),
         ]);
 
@@ -54,6 +56,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('userpage.index');
+        return redirect('/');
     }
 }

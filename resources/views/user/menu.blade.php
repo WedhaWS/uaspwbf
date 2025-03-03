@@ -52,11 +52,11 @@
                 <ul class="space-y-4">
                     <li class="flex items-start">
                         <span class="text-yellow-400 mr-2">•</span>
-                        Makanan YellowFit Kitchen mengandung 450 - 500 kalori di setiap boxnya
+                        Makanan WeightMate mengandung 450 - 500 kalori di setiap boxnya
                     </li>
                     <li class="flex items-start">
                         <span class="text-yellow-400 mr-2">•</span>
-                        Setiap pelanggan yang berlangganan Yellow Fit Kitchen akan mendapatkan Garansi Uang Kembali apabila makanan dirasa nggak enak, atau jika berat badan customer tidak turun
+                        Setiap pelanggan yang berlangganan WeightMate akan mendapatkan Garansi Uang Kembali apabila makanan dirasa nggak enak, atau jika berat badan customer tidak turun
                     </li>
                 </ul>
             </div>
@@ -71,14 +71,14 @@
                     OUTLET
                 </h2>
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    @foreach (['Jakarta', 'Tangerang', 'Palembang', 'Yogyakarta', 'Bogor', 'Surabaya', 'Malang', 'Solo', 'Depok', 'Bandung', 'Pekan Baru', 'Bekasi', 'Medan', 'Semarang'] as $outlet)
+                    @foreach (['Surabaya'] as $outlet)
                     <div class="bg-gray-700 rounded p-2 text-center">{{ $outlet }}</div>
                     @endforeach
                 </div>
             </div>
         </div>
         <div class="text-center mb-8">
-            <p class="mb-2">Sampai saat ini, Yellow Fit Kitchen</p>
+            <p class="mb-2">Sampai saat ini, WeightMate</p>
             <p class="text-2xl">telah berhasil menurunkan berat badan <span class="text-yellow-400 font-bold">299.492</span> customer</p>
         </div>
         <div class="text-center text-xl">

@@ -28,11 +28,7 @@
                 <p class="text-xl font-bold text-yellow-400 border-b-2 border-yellow-400 inline-block">UANG KEMBALI 100%</p>
             </div>
 
-            <div>
-                <h3 class="text-2xl font-bold mb-2">OPEN ORDER BATCH 50</h3>
-                <p class="mb-1">16 December 2024 - 22 December 2024</p>
-                <p>Close order in: 1d 8h 20m 16s</p>
-            </div>
+           
         </div>
     </div>
 </main>

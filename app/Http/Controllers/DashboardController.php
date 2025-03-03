@@ -30,6 +30,6 @@ class DashboardController extends Controller
     {
         return view('dashboard.info.infogempa');
     }
-
     
 }
+

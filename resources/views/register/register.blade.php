@@ -28,9 +28,7 @@
                 <div class="row w-100 mx-0">
                     <div class="col-lg-4 mx-auto">
                         <div class="auth-form-light text-left py-5 px-4 px-sm-5">
-                            <div class="brand-logo">
-                                <img src="../../assets/images/logo.svg" alt="logo">
-                            </div>
+                            
 
                             <!-- Combined Login and Register Form -->
                             <!-- <h4>Login & Register</h4> -->
@@ -38,10 +36,14 @@
                             <!-- Register Form -->
                             <form action="/register" method="POST" class="mt-4">
                                 @csrf
-                                <h4>Register Form</h4>
+                                <h4 class="text-center">Register Form</h4>
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" name="name"
                                         placeholder="Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control form-control-lg" name="hp"
+                                        placeholder="+62" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-lg" name="email"
