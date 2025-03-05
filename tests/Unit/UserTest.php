@@ -1,12 +1,16 @@
 <?php 
 namespace Tests\Unit;
 
+use App\Http\Controllers\DashboardController;
 use App\Models\JenisUser;
+use App\Models\Menu;
 use Tests\TestCase;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Facade;
+use Mockery;
 
 class UserTest extends TestCase
 {
@@ -60,4 +64,5 @@ class UserTest extends TestCase
             $this->assertFalse($userExists, "Expected error: '{$expectedError}', but registration succeeded for email: {$input['email']}");
         }
     }
+    
 }

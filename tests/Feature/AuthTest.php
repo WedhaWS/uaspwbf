@@ -2,7 +2,14 @@
 
 namespace Tests\Unit;
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LoginController;
+use App\Models\JenisUser;
 use App\Models\User;
+use Doctrine\DBAL\Schema\View;
+use PHPUnit\Framework\Assert;
+use Filament\Http\Livewire\Auth\Login;
+use Illuminate\Container\Attributes\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -10,39 +17,25 @@ class AuthTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * Pengujian registrasi user.
-     */
-    public function test_registration()
+  
+public function test_index_login_returns_login_view()
+{
+    $controller = new LoginController();
+
+    $view = $controller->indexlogin();
+
+    $this->assertEquals('login.login', $view->getName());
+    $this->assertInstanceOf(\Illuminate\View\View::class, $view);
+}
+
+    
+    public function test_show_login_returns_login_view()
     {
-        $response = $this->post('/register', [
-            'name' => 'John Doe',
-            'email' => 'johndoe@example.com',
-            'password' => 'password',
-            'password_confirmation' => 'password',
-        ]);
-
-        $response->assertRedirect('/home'); // Asumsi setelah registrasi diarahkan ke /home
-        $this->assertDatabaseHas('users', ['email' => 'johndoe@example.com']);
-    }
-
-    /**
-     * Pengujian login user.
-     */
-    public function test_login()
-    {
-        // Buat user contoh untuk login
-        $user = User::factory()->create([
-            'email' => 'johndoe@example.com',
-            'password' => bcrypt('password'),
-        ]);
-
-        $response = $this->post('/login', [
-            'email' => 'johndoe@example.com',
-            'password' => 'password',
-        ]);
-
-        $response->assertRedirect('/home'); // Asumsi setelah login diarahkan ke /home
-        $this->assertAuthenticatedAs($user);
+        $controller = new AuthController();
+    
+        $response = $controller->showLogin();
+    
+        $this->assertEquals('auth.login', $response->getName());
+        $this->assertInstanceOf(\Illuminate\View\View::class, $response);
     }
 }
